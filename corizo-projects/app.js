@@ -1,7 +1,7 @@
-// STUDENT CRUD USING LOCAL STORAGE
+
 let students = JSON.parse(localStorage.getItem("students")) || [];
 
-// Load table initially
+
 displayStudents();
 
 function displayStudents() {
@@ -24,14 +24,14 @@ function displayStudents() {
   });
 }
 
-// OPEN CREATE MODAL
+
 function openCreate() {
   document.getElementById("modalTitle").innerText = "Add Student";
   document.getElementById("studentId").value = "";
   clearForm();
 }
 
-// OPEN EDIT MODAL
+
 function openEdit(index) {
   document.getElementById("modalTitle").innerText = "Edit Student";
 
@@ -46,7 +46,7 @@ function openEdit(index) {
   modal.show();
 }
 
-// SAVE OR UPDATE
+
 function saveStudent() {
   const id = document.getElementById("studentId").value;
 
@@ -57,11 +57,11 @@ function saveStudent() {
     phone: document.getElementById("phone").value,
   };
 
-  // Update
+
   if (id !== "") {
     students[id] = studentData;
   }
-  // Create
+
   else {
     students.push(studentData);
   }
@@ -69,13 +69,13 @@ function saveStudent() {
   localStorage.setItem("students", JSON.stringify(students));
   displayStudents();
 
-  // Close modal
+
   bootstrap.Modal.getInstance(document.getElementById("studentModal")).hide();
 
   clearForm();
 }
 
-// DELETE STUDENT
+
 function deleteStudent(index) {
   if (confirm("Are you sure you want to delete this student?")) {
     students.splice(index, 1);
@@ -84,10 +84,11 @@ function deleteStudent(index) {
   }
 }
 
-// CLEAR FORM
+
 function clearForm() {
   document.getElementById("name").value = "";
   document.getElementById("course").value = "";
   document.getElementById("email").value = "";
   document.getElementById("phone").value = "";
 }
+
